@@ -34,14 +34,17 @@ function getRandomItem(list) {
 function generatePassword() {
   //repeats the prompt if the entry does not match the following criteria
 
-  var userInput = prompt("How many characters would you like your password to contain?");
-  var characterLength = parseInt(userInput);
 
-  validReponse = false;
-  while (validResponse === false) {
+
+  // validReponse = false;
+  // while (validResponse === false) {
     if (characterLength <= 128 && characterLength >= 8) {
 
-      validResponse = true;
+      // validResponse = true;
+      var userInput = prompt("How many characters would you like your password to contain?");
+      var characterLength = parseInt(userInput);
+
+
     }
     else if (characterLength > 128) {
       alert("Password Length must be less than 128 characters");
@@ -52,12 +55,13 @@ function generatePassword() {
     else if (isNaN(characterLength)) {
       alert("Please input a number.");
     }
-  }
+  // }
 
   specialCharConfirm = confirm("Click OK to confirm using special characters");
   lowerConfirm = confirm("Click OK to confirm using lowercase letters.");
   upperConfirm = confirm("Click OK to confirm using uppercase letters.");
   numberConfirm = confirm("Click OK to confirm using numbers.");
+
 
   var passwordCharacteristics = [];
 

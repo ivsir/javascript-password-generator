@@ -32,22 +32,16 @@ function getRandomItem(list) {
 }
 
 function generatePassword() {
-  // logic goes here
-  //while the generateBtn is clicked
-  validEntry = false;
-  while (validEntry === false) {
+  //repeats the prompt if the entry does not match the following criteria
 
-    var userInput = prompt("How many characters would you like your password to contain?");
-    var characterLength = parseInt(userInput);
+  var userInput = prompt("How many characters would you like your password to contain?");
+  var characterLength = parseInt(userInput);
 
-
+  validReponse = false;
+  while (validResponse === false) {
     if (characterLength <= 128 && characterLength >= 8) {
 
-      validEntry = true;
-      specialCharConfirm = confirm("Click OK to confirm using special characters");
-      lowerConfirm = confirm("Click OK to confirm using lowercase letters.");
-      upperConfirm = confirm("Click OK to confirm using uppercase letters.");
-      numberConfirm = confirm("Click OK to confirm using numbers.");
+      validResponse = true;
     }
     else if (characterLength > 128) {
       alert("Password Length must be less than 128 characters");
@@ -56,27 +50,33 @@ function generatePassword() {
       alert("Password Length must be greater than 8 characters");
     }
     else if (isNaN(characterLength)) {
-      window.alert("Please input a number.");
-    }
-
-    var passwordCharacteristics = [];
-
-    if (specialCharConfirm != null) {
-      passwordCharacteristics.push(charList);
-    }
-
-    if (lowerConfirm != null) {
-      passwordCharacteristics.push(lowerList);
-    }
-
-    if (upperConfirm != null) {
-      passwordCharacteristics.push(upperList);
-    }
-
-    if (numberConfirm != null) {
-      passwordCharacteristics.push(numberList);
+      alert("Please input a number.");
     }
   }
+
+  specialCharConfirm = confirm("Click OK to confirm using special characters");
+  lowerConfirm = confirm("Click OK to confirm using lowercase letters.");
+  upperConfirm = confirm("Click OK to confirm using uppercase letters.");
+  numberConfirm = confirm("Click OK to confirm using numbers.");
+
+  var passwordCharacteristics = [];
+
+  if (specialCharConfirm != null) {
+    passwordCharacteristics.push(charList);
+  }
+
+  if (lowerConfirm != null) {
+    passwordCharacteristics.push(lowerList);
+  }
+
+  if (upperConfirm != null) {
+    passwordCharacteristics.push(upperList);
+  }
+
+  if (numberConfirm != null) {
+    passwordCharacteristics.push(numberList);
+  }
+
   generatePassword = "";
 
   for (var i = 0; i < characterLength; i++) {
@@ -84,6 +84,8 @@ function generatePassword() {
     var randomChar = getRandomItem(randomList);
     generatePassword += randomChar;
   }
+
+
 }
 
 // Write password to the #password input

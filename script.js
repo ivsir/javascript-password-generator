@@ -24,13 +24,15 @@ function randomInt(min, max) {
     max = min;
     min = 0;
   }
-  return Math.floor(min * (1 - Math.random()))
+  return Math.floor(min * (1 - Math.random()) + Math.random()*max)
 }
 
-
+function getRandomItem(list) {
+  return list[randomInt(list.length)];
+}
 
 function generatePassword() {
-  validEntry = false;
+  var validEntry = false;
   var userInput = prompt("How many characters would you like your password to contain?");
   var characterLength = parseInt(userInput);
 
@@ -40,22 +42,22 @@ function generatePassword() {
     }
     else if (characterLength > 128) {
       alert("Password Length must be less than 128 characters");
-      
+
     }
     else if (characterLength < 8) {
       alert("Password Length must be greater than 8 characters");
-      
+
     }
     else if (isNaN(characterLength)) {
       alert("Please input a number.");
-      
+
     }
   }
 
-  specialCharConfirm = confirm("Click OK to confirm using special characters");
-  lowerConfirm = confirm("Click OK to confirm using lowercase letters.");
-  upperConfirm = confirm("Click OK to confirm using uppercase letters.");
-  numberConfirm = confirm("Click OK to confirm using numbers.");
+  var specialCharConfirm = confirm("Click OK to confirm using special characters");
+  var lowerConfirm = confirm("Click OK to confirm using lowercase letters.");
+  var upperConfirm = confirm("Click OK to confirm using uppercase letters.");
+  var numberConfirm = confirm("Click OK to confirm using numbers.");
 
   var passwordCharacteristics = [];
 
@@ -75,17 +77,19 @@ function generatePassword() {
     passwordCharacteristics.push(numberList);
   }
 
-  generatePassword = "";
+  if (passwordCharacteristics.length === 0) {
+    passwordCharacteristics.push(numberList);
+  }
+
+  var generatedPassword = "";
 
   for (var i = 0; i < characterLength; i++) {
     var randomList = getRandomItem(passwordCharacteristics);
     var randomChar = getRandomItem(randomList);
-    generatePassword += randomChar;
-  }
-  function getRandomItem(list) {
-    return list[randomInt(list.length)];
+    generatedPassword += randomChar;
   }
 
+  return generatedPassword; 
 }
 
 // Write password to the #password input

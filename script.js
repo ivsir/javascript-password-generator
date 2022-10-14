@@ -8,11 +8,10 @@ var validEntry = false;
 
 function randomInt(min, max) {
   if (!max) {
-    max = min;
+    max = min; 
     min = 0;
   }
   return Math.floor(max * Math.random())
-  // (min * (1 - Math.random()) + 
 }
 
 function getRandomCharacteristic(list) {
@@ -30,15 +29,15 @@ function generatePassword() {
     }
     else if (characterLength > 128) {
       alert("Password Length must be less than 128 characters");
-
+      return;
     }
     else if (characterLength < 8) {
       alert("Password Length must be greater than 8 characters");
-
+      return;
     }
     else if (isNaN(characterLength)) {
       alert("Please input a number.");
-
+      return;
     }
   }
 
@@ -74,6 +73,7 @@ function generatePassword() {
   for (var i = 0; i < characterLength; i++) {
     var randomList = getRandomCharacteristic(passwordCharacteristics);
     var randomChar = getRandomCharacteristic(randomList);
+    // adds random character to the variable generated password until it hits the end of characterLength
     generatedPassword += randomChar;
   }
 

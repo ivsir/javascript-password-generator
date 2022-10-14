@@ -12,8 +12,8 @@ I was given a starter code for a password generator. The starter code contained 
 </nav>
 
 ## How to Use this Project
-<a href="https://ivsir.github.io/Professional-Portfolio/">This is the link to my WebPage</a>
-<img src="assets/Professional-Portfolio-Screenshot.png">
+<a href="https://ivsir.github.io/javascript-password-generator/">This is the link to my WebPage</a>
+<img src="Screenshot-1.png">
 
 ## Contributors
 Risvi Tareq

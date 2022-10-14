@@ -6,28 +6,16 @@ var charList = [" ", "!", "\"", "#", "$", "%", "&", "\'", "(", ")", "*", "+", ",
 var numberList = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 var validEntry = false;
 
-// generates random integers picked from the length of each array
-// var lowerCaseGenerator = Math.floor(Math.random() * lowerList.length);
-// lowerGenerator = lowerList[lowerCaseGenerator];
-
-// var upperCaseGenerator = Math.floor(Math.random() * upperList.length);
-// upperGenerator = upperList[upperCaseGenerator];
-
-// var specialCharGenerator = Math.floor(Math.random() * charList.length);
-// specialGenerator = charList[specialCharGenerator];
-
-// var numberListGenerator = Math.floor(Math.random() * numberList.length);
-// numberGenerator = numberList[numberListGenerator];
-
 function randomInt(min, max) {
   if (!max) {
     max = min;
     min = 0;
   }
-  return Math.floor(min * (1 - Math.random()) + Math.random()*max)
+  return Math.floor(max * Math.random())
+  // (min * (1 - Math.random()) + 
 }
 
-function getRandomItem(list) {
+function getRandomCharacteristic(list) {
   return list[randomInt(list.length)];
 }
 
@@ -61,19 +49,19 @@ function generatePassword() {
 
   var passwordCharacteristics = [];
 
-  if (specialCharConfirm != null) {
+  if (specialCharConfirm === true) {
     passwordCharacteristics.push(charList);
   }
 
-  if (lowerConfirm != null) {
+  if (lowerConfirm === true) {
     passwordCharacteristics.push(lowerList);
   }
 
-  if (upperConfirm != null) {
+  if (upperConfirm === true) {
     passwordCharacteristics.push(upperList);
   }
 
-  if (numberConfirm != null) {
+  if (numberConfirm === true) {
     passwordCharacteristics.push(numberList);
   }
 
@@ -84,12 +72,12 @@ function generatePassword() {
   var generatedPassword = "";
 
   for (var i = 0; i < characterLength; i++) {
-    var randomList = getRandomItem(passwordCharacteristics);
-    var randomChar = getRandomItem(randomList);
+    var randomList = getRandomCharacteristic(passwordCharacteristics);
+    var randomChar = getRandomCharacteristic(randomList);
     generatedPassword += randomChar;
   }
 
-  return generatedPassword; 
+  return generatedPassword;
 }
 
 // Write password to the #password input
